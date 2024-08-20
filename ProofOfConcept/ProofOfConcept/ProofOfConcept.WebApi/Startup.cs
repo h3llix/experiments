@@ -74,9 +74,7 @@ namespace ProofOfConcept.WebApi
                 // Define endpoints
                 endpoints.MapGet("/", () => "Hello, World!");
 
-                string temp = $"Hello, abcdjkahdskjh {name}!"
-                
-                endpoints.MapGet("{/hello/{name}", (string name) => temp);
+                endpoints.MapGet("/hello/{name}", (string name) => $"Hello, {name}!");
 
                 endpoints.MapGet("/add", (int a, int b) => $"Sum: {a + b}");
 
@@ -104,7 +102,7 @@ namespace ProofOfConcept.WebApi
                     return Results.Ok($"User with ID {id} updated!");
                 });
 
-                endpoints.MapDelete("/delete/{id}/{hello}", (int id) =>
+                endpoints.MapDelete("/delete/{id}", (int id) =>
                 {
                     return Results.Ok($"User with ID {id} deleted!");
                 });
